@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  channel-request-bot:
+    build: .
+    container_name: channel-request-bot
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config.yaml:/app/config.yaml
+    environment:
+      - TZ=Europe/Moscow
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
